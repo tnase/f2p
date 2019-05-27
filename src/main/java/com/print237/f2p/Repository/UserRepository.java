@@ -9,5 +9,7 @@ import com.print237.f2p.entities.Users;
 @Repository("user")
 
 public interface UserRepository extends JpaRepository<Users, Long> {
+	
+	public  Users  findByEmail(String email); 
 
 }

@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -39,6 +40,10 @@ public class Posts implements Serializable {
 	
 	@Column(name="description",length = 1024)
 	private String description;
+	
+	@ManyToOne(optional = false, cascade=CascadeType.ALL)
+	@JoinColumn(name = "users_id",referencedColumnName="id")
+	private Users user ;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name = "comment_id",referencedColumnName="id")

@@ -48,9 +48,8 @@ public class Users implements Serializable {
 	@Column(name="password",nullable = false)
 	private String password;
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name = "user_id",referencedColumnName="id")
-	private List<Posts> posts = new ArrayList<>();
+	@OneToMany(mappedBy = "user",cascade=CascadeType.ALL)
+     private List<Posts> posts = new ArrayList<>();
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="created_at", nullable = false)
