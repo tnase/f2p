@@ -1,6 +1,8 @@
 package com.print237.f2p.servicesImpl;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,15 +28,22 @@ public class UserserviceImpl implements UserService {
 	}
 
 	@Override
-	public Boolean login(String username, String password) {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean login(String email, String password) {
+		   Users user=userRep.findByEmail(email);
+		   if(user!=null) {
+			   if(password.equals(user.getPassword()))
+		    return true;
+		   }
+		   
+		   return false ;
 	}
 
 	@Override
-	public Posts addPosts(Posts post) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Posts> addPosts(String email ,Posts post) {
+		  Users user=userRep.findByEmail(email);
+		  user.getPosts().add(post) ;
+		 user= userRep.save(user) ;
+		return user.getPosts();
 	}
 
 }
