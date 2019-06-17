@@ -41,9 +41,8 @@ public class UserserviceImpl implements UserService {
 	@Override
 	public List<Posts> addPosts(String email ,Posts post) {
 		  Users user=userRep.findByEmail(email);
-		  user.getPosts().add(post) ;
 		 user= userRep.save(user) ;
-		return user.getPosts();
+		return null ;
 	}
 
 }

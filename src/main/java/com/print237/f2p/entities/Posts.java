@@ -45,6 +45,10 @@ public class Posts implements Serializable {
 	@JoinColumn(name = "users_id",referencedColumnName="id")
 	private Users user ;
 	
+	@ManyToOne(optional = true, cascade=CascadeType.ALL)
+	@JoinColumn(name = "file_id",referencedColumnName="id")
+	private Files file ;
+	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name = "comment_id",referencedColumnName="id")
 	private List<Comments> comments = new ArrayList<>();

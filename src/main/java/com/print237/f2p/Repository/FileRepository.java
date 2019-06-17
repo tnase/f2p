@@ -9,5 +9,7 @@ import com.print237.f2p.entities.Files;
 @Repository("file")
 
 public interface FileRepository extends JpaRepository<Files, Long> {
+	
+	Files  findByName(String name);
 
 }
